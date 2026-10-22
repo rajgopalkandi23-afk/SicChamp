@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciChamp - Fun & Interactive Science Games for Kids</title>
+    <!-- Friendly Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="container header-inner">
+            <div class="logo-link" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <span class="logo-badge">🔬</span>
+                <span class="logo-text">SciChamp</span>
+                <span class="logo-tagline">Play & Learn Science</span>
+            </div>
+
+            <div class="header-right">
+                <!-- Stars & Rank Badge -->
+                <div class="user-stars-badge" title="Your Total Science Stars!">
+                    <span class="star-icon">⭐</span>
+                    <span id="user-stars-count">0</span>
+                    <span class="stars-label">Stars</span>
+                </div>
+
+                <!-- Sound Toggle -->
+                <button class="btn-sound-toggle" id="btn-toggle-sound" title="Toggle Sound Effects">
+                    <span>🔊 Sound: ON</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="hero-pill-tag">
+                <span>🚀</span> 100% Free Interactive Science Labs
+            </div>
+            <h1 class="hero-title">
+                Explore, Experiment & Become a <span class="hero-highlight">SciChamp!</span>
+            </h1>
+            <p class="hero-desc">
+                Dive into hands-on interactive games in Chemistry, Physics, and Biology. Build molecules, complete electric circuits, explore living cells, and blast off rockets!
+            </p>
+
+            <!-- Daily Science Fact Banner -->
+            <div class="daily-fact-card">
+                <span class="fact-badge">💡 Did You Know?</span>
+                <div class="fact-text" id="ticker-fact-text">Loading awesome science fact...</div>
+                <button class="btn-shuffle-fact" id="btn-shuffle-fact" title="Show another fact">🎲</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toolbar: Filter Pills & Search -->
+    <section class="toolbar-section">
+        <div class="container toolbar-wrapper">
+            <div class="filter-pills-row">
+                <button class="filter-pill pill-active" data-filter="all">🌟 All Games (8)</button>
+                <button class="filter-pill" data-filter="chemistry">🧪 Chemistry</button>
+                <button class="filter-pill" data-filter="physics">⚡ Physics</button>
+                <button class="filter-pill" data-filter="biology">🌱 Biology</button>
+            </div>
+
+            <div class="search-box-wrapper">
+                <span class="search-icon-pos">🔍</span>
+                <input type="text" id="search-games" class="search-input" placeholder="Search games or topics...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid Section -->
+    <main class="games-grid-section">
+        <div class="container">
+            <div class="games-grid" id="games-grid">
+                <!-- Rendered dynamically by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Game Modal Arena -->
+    <div class="game-modal" id="game-modal" role="dialog" aria-modal="true">
+        <div class="modal-content-shell">
+            <button class="btn-close-modal" id="btn-close-modal" title="Exit to Games">✕</button>
+            <div id="game-mount-point">
+                <!-- Active game rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Science Learning Features -->
+    <section class="container" style="margin-top: 2rem; margin-bottom: 3rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+            <div style="background: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 16px; padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🧪</div>
+                <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem;">Real Science Concepts</h3>
+                <p style="font-size: 0.9rem; color: #64748B;">Learn atoms, pH scale, electric conductivity, gravity, cells, and food webs with authentic science models.</p>
+            </div>
+
+            <div style="background: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 16px; padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🎮</div>
+                <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem;">Hands-on Playable</h3>
+                <p style="font-size: 0.9rem; color: #64748B;">Every game is immediately playable in your browser without any account, signup, or software installation.</p>
+            </div>
+
+            <div style="background: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 16px; padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">⭐</div>
+                <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem;">Earn Stars & Badges</h3>
+                <p style="font-size: 0.9rem; color: #64748B;">Level up from Curious Explorer to Science Grand Champion as you complete challenges and test your knowledge!</p>
+            </div>
+
+            <div style="background: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 16px; padding: 1.5rem; text-align: center;">
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📱</div>
+                <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem;">Mobile & Tablet Friendly</h3>
+                <p style="font-size: 0.9rem; color: #64748B;">Play with touch taps or mouse clicks on computers, Chromebooks, iPads, and smartphones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-brand">🔬 SciChamp - Fun Science for Every Student</div>
+            <p class="footer-copy">Bright, playful, 100% free interactive science learning games.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts in proper dependency order -->
+    <script src="js/data.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/confetti.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
